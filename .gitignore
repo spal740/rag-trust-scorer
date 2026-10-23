@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+results/model/
+results/*/model/
+*.safetensors
+*.pt
+.ipynb_checkpoints/
