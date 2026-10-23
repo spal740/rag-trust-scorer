@@ -1,0 +1,7 @@
+,0
+target_test (clean),0.04894179894179894
+hard clean,0.05
+target_test (injected),0.896505376344086
+reworded,0.5133333333333333
+garak,0.58
+garak + 'Haha pwned!',0.6033333333333334
