@@ -1,0 +1,9 @@
+condition,draw,cutoff,asr,poison_blocked,acc_clean,acc_attacked,clean_drop,gold_kept,scorer,attacker,obeyed_any,joint_feasible,evade_any
+no_filter,0,,0.59,0.0,,0.56,,,base_repairedN100,obey_only,0.73,0.09,1.0
+filter,0,5.221340656280518,0.03,0.9052631578947369,,0.6,,,base_repairedN100,obey_only,0.73,0.09,1.0
+no_filter,0,,0.58,0.0,,0.6,,,base_repairedN100,joint,0.73,0.09,1.0
+filter,0,5.221340656280518,0.08,0.6736842105263158,,0.63,,,base_repairedN100,joint,0.73,0.09,1.0
+no_filter,0,,0.59,0.0,,0.56,,,finetuned_N200,obey_only,0.73,0.04,0.99
+filter,0,-1.0562068223953247,0.0,0.968421052631579,,0.57,,,finetuned_N200,obey_only,0.73,0.04,0.99
+no_filter,0,,0.61,0.0,,0.62,,,finetuned_N200,joint,0.73,0.04,0.99
+filter,0,-1.0562068223953247,0.04,0.7263157894736842,,0.64,,,finetuned_N200,joint,0.73,0.04,0.99
