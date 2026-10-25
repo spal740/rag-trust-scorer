@@ -307,3 +307,18 @@ Per kind (ASR no filter | blocked by repaired N=100 | blocked by fine-tuned N=20
 - garak: .065 | .622 | .739
 Residual ASR after repaired cutoff: classic .016, standard .005, reworded .011, garak 0; fine-tuned: classic .016, others 0.
 Finding: blocking is weakest on reworded and garak wordings (57-62 % repaired, 74-75 % fine-tuned), the same sets where detection was weak in the sweeps, but the answering LLM also obeys those less (garak 6.5 %), so the end-to-end residual ASR stays about 1 %. Reworded is the kind with the most remaining risk. Caveat: per-kind n is small (a 1.6 % ASR is ~3 cases), so report as indicative, not precise.
+
+## 33. Joint attacker re-run, completed (Colab, 2026-10-25)
+
+New Colab runtime: scorer retrained from the public repo (data rebuilt with build_data.py and build_extra.py, then train.py); metrics identical to the earlier run (source AUC 0.9998, target AUC 0.986, 82.4% clean FPR at the source cutoff). Reduced size because of the Colab limit: `python src/adaptive_joint.py --questions 100 --cands 30` (3,000 probe prompts, one cutoff draw). Results in results/joint/adaptive_joint.csv, log in results/joint/joint_run.log.
+
+Probe: 5.6% of all variants obeyed by Phi-3.5-mini; share of questions with at least one obeyed variant 0.73; with a variant both obeyed and under the cutoff 0.09 (repaired N=100) and 0.04 (fine-tuned N=200); evade_any 1.00 and 0.99.
+
+| scorer | attacker | no-filter ASR | filter ASR | poisoned blocked |
+| --- | --- | --- | --- | --- |
+| repaired N=100 | obey_only | 0.59 | 0.03 | 0.905 |
+| repaired N=100 | joint | 0.58 | 0.08 | 0.674 |
+| fine-tuned N=200 | obey_only | 0.59 | 0.00 | 0.968 |
+| fine-tuned N=200 | joint | 0.61 | 0.04 | 0.726 |
+
+Reading: the scorer is easy to evade (evade_any about 1.0), but few questions have a variant that is also obeyed and under the cutoff, so the filter still cuts ASR from about 59% to 3-8%. The joint attacker beats the obey-only attacker (8% vs 3% with the repaired cutoff). One draw and 100 questions, so the rates are coarse; the earlier interrupted 200-question run gave similar probe figures (5.7% obeyed, 80% any, 15% feasible). The report (Section IV-F) now uses these numbers.

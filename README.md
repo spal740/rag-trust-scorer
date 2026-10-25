@@ -35,7 +35,7 @@ python src/llm_susceptibility.py    # which small LLM follows a planted injectio
 python src/rag_pipeline.py          # end-to-end RAG with the filter (retriever, Phi-3.5-mini)
 python src/adaptive_lite.py ...     # query-budget attacker against the scorer
 python src/adaptive_e2e.py ...      # attacker end to end
-python src/adaptive_joint.py ...    # joint attacker (partial results)
+python src/adaptive_joint.py ...    # joint attacker (completed; results/joint/)
 python src/make_figures.py          # CIs and figures from results/run3_final/scores.npz (no GPU)
 ```
 Each script's docstring gives its exact arguments. Every random choice uses a fixed seed.
